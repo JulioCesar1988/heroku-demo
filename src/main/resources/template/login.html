@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+<header th:replace="layout :: header"></header>
+<div class="container">
+    <h2>Login (para poder ingresar al sistema necesita inciar sesion).</h2>
+    <form th:action="@{/login}" method="post">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox" name="remember"> Recordar Contraseña </label>
+        </div>
+        <button type="submit" class="btn btn-primary" >Iniciar Sesion</button>
+    </form>
+</div>
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
