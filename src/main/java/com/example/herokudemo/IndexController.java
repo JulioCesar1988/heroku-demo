@@ -13,6 +13,6 @@ public class IndexController {
 
     @GetMapping("/login")
     public String login() {
-        return " 10101011 !!!! ";
+        return "login";
     }
 }
