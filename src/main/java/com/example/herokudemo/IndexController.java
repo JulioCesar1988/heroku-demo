@@ -13,6 +13,6 @@ public class IndexController {
 
     @GetMapping("/login")
     public String login() {
-        return " WALTER  QUE SALEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE !!!! ";
+        return " 10101011 !!!! ";
     }
 }
