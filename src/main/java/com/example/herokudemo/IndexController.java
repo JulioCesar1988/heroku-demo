@@ -9,4 +9,10 @@ public class IndexController {
     public String index() {
         return "Hola mundo.";
     }
+
+
+    @GetMapping("/login")
+    public String login() {
+        return "POR FAVOR INGRESA TU EMAILS Y CONTRASEÑA";
+    }
 }
