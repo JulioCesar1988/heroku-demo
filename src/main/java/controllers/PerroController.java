@@ -1,6 +1,6 @@
 package controllers;
 
-import com.bolsadeideas.springboot.app.models.service.IPerroService;
+import models.service.IPerroService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
