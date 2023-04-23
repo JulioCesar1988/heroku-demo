@@ -1,6 +1,7 @@
 package models.service;
 
 
+import models.dao.IVeterinariaDao;
 import models.entity.Veterinaria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
