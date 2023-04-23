@@ -1,4 +1,4 @@
-package controllers;
+package com.example.herokudemo;
 
 import java.util.Map;
 
