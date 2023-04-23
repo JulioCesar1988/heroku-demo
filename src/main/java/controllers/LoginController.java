@@ -1,7 +1,5 @@
 package controllers;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,14 +27,5 @@ public class LoginController {
           System.out.println("datos ingresados : " + email + " - " + pwd);
         // Si el usuario se autentica correctamente, redirigirlo a la página de inicio
         return "login";
-    }
-
-    @SpringBootApplication
-    public static class HerokuDemoApplication {
-
-        public static void main(String[] args) {
-            SpringApplication.run(HerokuDemoApplication.class, args);
-        }
-
     }
 }
