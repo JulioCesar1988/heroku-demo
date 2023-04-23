@@ -15,7 +15,7 @@ public class IndexController {
 
     @GetMapping("/login")
     public String login() {
-        return "listado_veterinarias";
+        return "login";
     }
 
 
