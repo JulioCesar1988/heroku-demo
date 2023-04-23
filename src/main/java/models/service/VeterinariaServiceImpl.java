@@ -1,9 +1,7 @@
-package com.bolsadeideas.springboot.app.models.service;
+package models.service;
 
 
-import com.bolsadeideas.springboot.app.models.dao.IClienteDao;
-import com.bolsadeideas.springboot.app.models.dao.IVeterinariaDao;
-import com.bolsadeideas.springboot.app.models.entity.Veterinaria;
+import models.entity.Veterinaria;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

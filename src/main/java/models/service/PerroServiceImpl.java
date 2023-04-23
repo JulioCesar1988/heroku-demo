@@ -1,7 +1,8 @@
-package com.bolsadeideas.springboot.app.models.service;
+package models.service;
 
-import com.bolsadeideas.springboot.app.models.dao.IPerroDao;
-import com.bolsadeideas.springboot.app.models.entity.Perro;
+
+import models.dao.IPerroDao;
+import models.entity.Perro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

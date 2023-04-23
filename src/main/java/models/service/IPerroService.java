@@ -1,7 +1,8 @@
-package com.bolsadeideas.springboot.app.models.service;
+package models.service;
 
 
-import com.bolsadeideas.springboot.app.models.entity.Perro;
+
+import models.entity.Perro;
 
 import java.util.List;
 

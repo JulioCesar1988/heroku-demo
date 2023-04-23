@@ -1,4 +1,4 @@
-package com.bolsadeideas.springboot.app.models.entity;
+package models.entity;
 
 public class Turno {
 }

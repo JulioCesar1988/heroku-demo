@@ -1,8 +1,9 @@
-package com.bolsadeideas.springboot.app.models.service;
+package models.service;
+
+import models.entity.Cliente;
 
 import java.util.List;
 
-import com.bolsadeideas.springboot.app.models.entity.Cliente;
 
 public interface IClienteService {
 	

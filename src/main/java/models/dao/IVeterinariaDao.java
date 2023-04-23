@@ -1,6 +1,6 @@
 package models.dao;
 
-import com.bolsadeideas.springboot.app.models.entity.Veterinaria;
+import models.entity.Veterinaria;
 import org.springframework.data.repository.CrudRepository;
 
 

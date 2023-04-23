@@ -1,6 +1,7 @@
-package com.bolsadeideas.springboot.app.models.service;
+package models.service;
 
-import com.bolsadeideas.springboot.app.models.entity.Veterinaria;
+
+import models.entity.Veterinaria;
 
 import java.util.List;
 
