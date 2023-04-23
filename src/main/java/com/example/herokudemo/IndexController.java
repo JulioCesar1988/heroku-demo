@@ -17,4 +17,11 @@ public class IndexController {
     public String login() {
         return "listado_veterinarias";
     }
+
+
+    @GetMapping("/listar")
+    public String listar() {
+        return "listar";
+    }
+
 }
