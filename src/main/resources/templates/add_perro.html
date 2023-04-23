@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container py-4">
+
+  <div class="card bg-dark text-white">
+    <div class="card-header" th:text="${titulo}"></div>
+    <div class="card-body">
+
+      <div th:object="${perro}" th:remove="tag">
+        <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+          <li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+        </ul>
+      </div>
+      <form th:action="@{/pendiente_hacer}" th:object="${perro}" method="post">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Nombre</label>
+          <div class="col-sm-6">
+            <input type="text" th:field="*{nombre}" class="form-control"
+                   th:errorclass="'form-control alert-danger'" /> <small
+                  class="form-text text-danger"
+                  th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Raza</label>
+          <div class="col-sm-6">
+            <input type="text" th:field="*{raza}" class="form-control"
+                   th:errorclass="'form-control alert-danger'" /> <small
+                  class="form-text text-danger"
+                  th:if="${#fields.hasErrors('raza')}" th:errors="*{raza}"></small>
+          </div>
+        </div>
+
+
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Color</label>
+          <div class="col-sm-6">
+            <input type="text" th:field="*{color}" class="form-control"
+                   th:errorclass="'form-control alert-danger'" /> <small
+                  class="form-text text-danger"
+                  th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></small>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Observacion</label>
+          <div class="col-sm-6">
+            <input type="text" th:field="*{observacion}" class="form-control"
+                   th:errorclass="'form-control alert-danger'" /> <small
+                  class="form-text text-danger"
+                  th:if="${#fields.hasErrors('observacion')}" th:errors="*{observacion}"></small>
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Foto</label>
+          <div class="col-sm-6">
+          <input type="file" class="form-control" id="customFileLang" >
+          </div>
+        </div>
+
+
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <input type="submit" value="Crear Perro" class="btn btn-secondary" />
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
