@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
 <body>
 
+<header th:replace="layout/layout :: header"></header>
+
 <div class="container py-4">
+
   <div class="card bg-light">
     <!--<div class="card-header" th:text="${titulo}"></div>-->
     <div class="card-body">
+
+
       <table class="table table-striped">
         <thead>
         <tr>
@@ -19,11 +25,13 @@
           <td th:text="${v.horario}"></td>
           <td th:text="${v.nombre}"></td>
           <td th:text="${v.direccion}"></td>
+
         </tr>
         </tbody>
       </table>
     </div>
   </div>
 </div>
+<footer th:replace="layout/layout :: footer"></footer>
 </body>
 </html>
