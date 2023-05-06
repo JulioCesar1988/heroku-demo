@@ -26,6 +26,7 @@ public class ClienteController {
 	@Autowired
 	private IClienteService clienteService;
 
+	// metodo para veterinario
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("titulo", "Listado de clientes");
@@ -33,23 +34,16 @@ public class ClienteController {
 		return "listar";
 	}
 
+	// formulario para el Cliente
 	@RequestMapping(value = "/form")
 	public String crear(Map<String, Object> model) {
-
 		Cliente cliente = new Cliente();
 		model.put("cliente", cliente);
 		model.put("titulo", "Formulario de Cliente");
 		return "form";
 	}
 
-	@RequestMapping(value = "/formularioPerro")
-	public String crearPerro(Map<String, Object> model) {
 
-		Perro perro = new Perro();
-		model.put("perro", perro);
-		model.put("titulo", "Formulario de Perro");
-		return "add_perro";
-	}
 
 
 	@RequestMapping(value = "/login")
@@ -103,5 +97,15 @@ public class ClienteController {
 			flash.addFlashAttribute("success", "Cliente eliminado con éxito!");
 		}
 		return "redirect:/listar";
+	}
+
+
+	@RequestMapping(value = "/getPerros")
+	public String misPerros(Map<String, Object> model) {
+		System.out.println("Cantidad de perros del clientes : 1 es : " + clienteService.findOne(1L).getPerro().size());
+		Cliente cliente = new Cliente();
+		model.put("cliente", cliente);
+		model.put("titulo", "Login del sistema");
+		return "login";
 	}
 }

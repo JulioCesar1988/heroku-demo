@@ -41,6 +41,9 @@ public class Cliente implements Serializable {
 
 	@NotEmpty
 	private String dni;
+
+
+	private String rol;
 	
 	@NotEmpty
 	@Email
@@ -105,6 +108,13 @@ public class Cliente implements Serializable {
 	}
 
 
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
+	}
 
 	private static final long serialVersionUID = 1L;
 
