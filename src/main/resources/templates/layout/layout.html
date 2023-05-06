@@ -7,32 +7,33 @@
 </head>
 <body>
 	<header th:fragment="header">
-		<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+		<nav class="navbar navbar-light" style="background-color: #ff9100;">
 			<!-- Navbar content -->
-			<a class="navbar-brand" href="#">Veterinaria Grupo 24</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#navbarNav" aria-controls="navbarNav"
-				aria-expanded="false" aria-label="Toggle navigation">
+					data-target="#navbarNav" aria-controls="navbarNav"
+					aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
 					<li class="nav-item active"><a class="nav-link" href="#">Home
-							<span class="sr-only">(current)</span>
+						<span class="sr-only">(current)</span>
 					</a></li>
 					<li class="nav-item"><a class="nav-link" th:href="@{/login}">Login</a>
+						<!-- como usuario deseo ingresar al sistemas -->
+					<li class="nav-item"><a class="nav-link" th:href="@{/form}">Registrarse</a>
+						<!-- como usuario quiero registrarme en el sistema para poder usar los servicios -->
+					<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Lista Clientes</a>
+						<!-- como usuario veterinario deseo ver los turnos solicitados -->
 					<!-- como usuario deseo ingresar al sistemas -->
 					<li class="nav-item"><a class="nav-link" th:href="@{/form}">Registrarse</a>
 					<!-- como usuario quiero registrarme en el sistema para poder usar los servicios -->
-					<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Lista Clientes</a>
 					<!-- como usuario veterinario deseo ver los turnos solicitados -->
-					<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Veterinario ver turnos solicitados</a>
 					<!-- como cliente registrado del sistema deseao solicitar un turno -->
-					<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Solcitar Turno</a>
 					<!-- como cliente registrado deseo hacer una donacion -->
 					<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Hacer Donacion</a>
 					<!-- como cliente registrado deseo agregar a mis perros -->
-					<li class="nav-item"><a class="nav-link" th:href="@{/formularioPerro}">Agregar Perro/mascota</a>
+					<li class="nav-item"><a class="nav-link" th:href="@{/formularioPerro}">Agregar Perro</a>
 					<!-- como cliente registrado deseo publicar un perro perdido -->
 					<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Publicar Perro perdido</a>
 					<!-- como cliente quiero adoptar un perro en adopcion-->
@@ -40,9 +41,7 @@
 					<!-- como cliente / no cliente quiero buscar un perro perdido -->
 					<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Buscar Perro perdido</a>
 					<!-- como cliente / no cliente quiero contactar un cuidador -->
-					<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Buscar Cuidador</a>
-					<!-- como cliente / no cliente quiero contactar un paseardor -->
-					<li class="nav-item"><a class="nav-link" th:href="@{/listar}">Buscar Paseador</a>
+
 					<!-- como cliente / no cliente quiero contactar un paseardor -->
 					<li class="nav-item"><a class="nav-link" th:href="@{/listarVeterinarias}">Ver Veterinarias recomendadas</a>
 					</li>
