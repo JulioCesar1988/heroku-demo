@@ -9,11 +9,14 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
-
+@Data
 @Entity
 @Table(name = "clientes")
 public class Cliente implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,18 +29,8 @@ public class Cliente implements Serializable {
 	private String apellido;
 
 	// Otros atributos y métodos
-
 	@OneToMany(mappedBy = "cliente")
 	private List<Perro> perro;
-
-	// Getters y setters
-	public List<Perro> getPerro() {
-		return perro;
-	}
-
-	public void setPerro(List<Perro> perro) {
-		this.perro = perro;
-	}
 
 	@NotEmpty
 	private String dni;
@@ -55,67 +48,6 @@ public class Cliente implements Serializable {
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date createAt;
 
-	public Long getId_cliente() {
-		return id_cliente;
-	}
-
-	public void setId_cliente(Long id_cliente) {
-		this.id_cliente = id_cliente;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Date getCreateAt() {
-		return createAt;
-	}
-
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
-
-	public String getDni() {
-		return dni;
-	}
-
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-
-	public String getRol() {
-		return rol;
-	}
-
-	public void setRol(String rol) {
-		this.rol = rol;
-	}
-
-	private static final long serialVersionUID = 1L;
+   private String clave;
 
 }

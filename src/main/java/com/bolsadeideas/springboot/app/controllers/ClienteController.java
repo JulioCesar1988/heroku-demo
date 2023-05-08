@@ -26,11 +26,23 @@ public class ClienteController {
 	@Autowired
 	private IClienteService clienteService;
 
+	// home principal de la pagina
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String home(Model model) {
+		model.addAttribute("titulo", "Listado de clientes");
+		model.addAttribute("clientes", clienteService.findAll());
+		System.out.println("cantidad de perros " + clienteService.findOne(1L).getPerro().size());
+		return "home";
+	}
+
 	// metodo para veterinario
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listar(Model model) {
 		model.addAttribute("titulo", "Listado de clientes");
 		model.addAttribute("clientes", clienteService.findAll());
+
+
+
 		return "listar";
 	}
 
