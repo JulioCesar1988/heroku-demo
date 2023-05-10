@@ -36,6 +36,21 @@ public class ClienteServiceImpl implements IClienteService {
 		return clienteDao.findById(id).orElse(null);
 	}
 
+
+	@Override
+	@Transactional(readOnly = true)
+	public Cliente buscarClientePorEmail(String email) {
+		Cliente c = null ;
+		List<Cliente> lista = (List<Cliente>) clienteDao.findAll();
+		for (int i = 0; i <lista.size() ; i++) {
+			if (lista.get(i).getEmail().equals(email)){
+				c = lista.get(i);
+				return c;
+			}
+		}
+		return c;
+	}
+
 	@Override
 	@Transactional
 	public void delete(Long id) {

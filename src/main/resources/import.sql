@@ -1,6 +1,6 @@
 /* Populate tables */
-INSERT INTO clientes (id_cliente, nombre, apellido,dni ,email, create_at,rol) VALUES(1, 'Veterinario_1', 'Veterinario_1','111111' ,'Veterinario_1@ohmydog.com', '2017-08-28','VETERINARIO');
-INSERT INTO clientes (id_cliente, nombre, apellido,dni ,email, create_at,rol) VALUES(2, 'Veterinario_2', 'Veterinario_2','111111' ,'Veterinari_2o@ohmydog.com', '2017-08-28','VETERINARIO');
+INSERT INTO clientes (id_cliente, nombre, apellido,dni ,email, create_at,rol,clave) VALUES(1, 'veterinario1', 'Veterinario1','111111' ,'veterinario1@ohmydog.com', '2017-08-28','VETERINARIO','1234');
+INSERT INTO clientes (id_cliente, nombre, apellido,dni ,email, create_at,rol,clave) VALUES(2, 'veterinario2', 'Veterinario2','111111' ,'veterinario2@ohmydog.com', '2017-08-28','VETERINARIO','1234');
 
 /*Clientes*/
 INSERT INTO clientes (id_cliente, nombre, apellido,dni ,email, create_at,rol,clave) VALUES(3, 'JULIO', 'JULIO','111111' ,'julio@ohmydog.com', '2017-08-28','CLIENTE','1234');

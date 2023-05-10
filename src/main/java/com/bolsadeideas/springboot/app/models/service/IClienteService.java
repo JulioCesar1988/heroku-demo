@@ -3,6 +3,7 @@ package com.bolsadeideas.springboot.app.models.service;
 import java.util.List;
 
 import com.bolsadeideas.springboot.app.models.entity.Cliente;
+import org.springframework.transaction.annotation.Transactional;
 
 public interface IClienteService {
 	
@@ -11,7 +12,10 @@ public interface IClienteService {
 	public void save(Cliente cliente);
 	
 	public Cliente findOne(Long id);
-	
-	public void delete(Long id);
+
+    @Transactional(readOnly = true)
+    Cliente buscarClientePorEmail(String email);
+
+    public void delete(Long id);
 	
 }

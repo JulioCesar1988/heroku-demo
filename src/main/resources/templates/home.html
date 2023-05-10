@@ -6,67 +6,35 @@
 <header th:replace="layout/layout :: header"></header>
 
 
-<main>
-  <section class="hero">
-    <h1>Bienvenido a nuestra veterinaria</h1>
-    <p>Servicios de alta calidad para tus mascotas</p>
-  </section>
 
-  <section class="servicios">
-    <h2>Nuestros servicios</h2>
-    <div class="servicio">
-      <img src="imagen1.jpg" alt="Servicio 1">
-      <h3>Consulta médica</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae mauris vitae augue lobortis tristique vel eget quam. </p>
-    </div>
-    <div class="servicio">
-      <img src="imagen2.jpg" alt="Servicio 2">
-      <h3>Vacunación</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae mauris vitae augue lobortis tristique vel eget quam. </p>
-    </div>
-    <div class="servicio">
-      <img src="imagen3.jpg" alt="Servicio 3">
-      <h3>Cirugía</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae mauris vitae augue lobortis tristique vel eget quam. </p>
-    </div>
-  </section>
 
-  <section class="equipo">
-    <h2>Nuestro equipo</h2>
-    <div class="veterinario">
-      <img src="veterinario1.jpg" alt="Veterinario 1">
-      <h3>Dr. Juan Pérez</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae mauris vitae augue lobortis tristique vel eget quam. </p>
-    </div>
-    <div class="veterinario">
-      <img src="veterinario2.jpg" alt="Veterinario 2">
-      <h3>Dra. Ana Gómez</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae mauris vitae augue lobortis tristique vel eget quam. </p>
-    </div>
-    <div class="veterinario">
-      <img src="veterinario3.jpg" alt="Veterinario 3">
-      <h3>Dr. Carlos Sánchez</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae mauris vitae augue lobortis tristique vel eget quam. </p>
-    </div>
-  </section>
 
-  <section class="galeria">
-    <h2>Galería de fotos</h2>
-    <div class="imagen">
-      <img src="foto1.jpg" alt="Foto 1">
+<div th:if="${session.cliente != null}">
+    <!-- contenido de la página para usuarios no autenticados -->
+    <p>EXISTE UN SESION </p>
+
+    <p>Nombre del cliente: <span th:text="${session.cliente.nombre}">Nombre por defecto</span></p>
+
+    <p>Hello <span th:text="${session.cliente.nombre}">Friend</span>!</p>
+    <p>Hello <span th:text="${session.cliente.rol}">Friend</span>!</p>
+    <p>Hello <span th:text="${session.cliente.email}">Friend</span>!</p>
+    <div th:if="${session.cliente != null}">
+        <p>Bienvenido, cliente!
+        <a th:href="@{/perfil}">Ir a mi perfil</a>
+        <form th:action="@{/logout}" method="GET">
+            <button type="submit">Cerrar sesión</button>
+        </form>
     </div>
-    <div class="imagen">
-      <img src="foto2.jpg" alt="Foto 2">
-    </div>
-    <div class="imagen">
-      <img src="foto3.jpg" alt="Foto 3">
-    </div>
-    <div class="imagen">
-      <img src="foto4.jpg" alt="Foto 4">
-    </div>
-    <div class="imagen">
-      <img src="foto5.jpg" alt="Foto 5">
-    </div>
+</div>
+
+
+
+<div th:if="${session.cliente == null}">
+    <!-- contenido de la página para usuarios no autenticados -->
+    <p>NO EXISTE UN SESION </p>
+
+</div>
+
 
 
 <footer th:replace="layout/layout :: footer"></footer>
