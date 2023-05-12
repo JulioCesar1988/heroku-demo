@@ -16,4 +16,6 @@ public interface IPerroService {
         public void delete(Long id);
 
 
+        // metodo para calcular los meses  de un perro
+        int cantidadMesesParaUnPerro(Perro perro);
 }

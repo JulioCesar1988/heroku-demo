@@ -20,17 +20,23 @@ public class Perro {
     private String color;
     @NotEmpty
     private String raza;
+
     @NotNull
     @Column(name = "create_at")
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date fechaNacimiento;
-    private Double peso;
+    private Date createAt;
+
+    private String peso;
+
 
 
     @NotEmpty
     private String observacion;
-    private String foto;
+
+    @Lob
+    private byte[] foto;
+
     // Otros atributos y métodos
     @ManyToOne
     @JoinColumn(name = "id_cliente")

@@ -6,7 +6,7 @@
 <header th:replace="layout/layout :: header"></header>
 
 <div class="container py-4">
-
+<p>Formulario para agregar a tu perrito !!!</p>
   <div class="card bg-dark text-white">
     <div class="card-header" th:text="${titulo}"></div>
     <div class="card-body">
@@ -16,24 +16,30 @@
           <li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
         </ul>
       </div>
-      <form th:action="@{/pendiente_hacer}" th:object="${perro}" method="post">
+      <form th:action="@{/agregarperro}" th:object="${perro}" method="post" enctype="multipart/form-data" >
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Nombre</label>
           <div class="col-sm-6">
-            <input type="text" th:field="*{nombre}" class="form-control"
+            <input type="text" th:field="*{nombre}" class="form-control"  required
                    th:errorclass="'form-control alert-danger'" /> <small
                   class="form-text text-danger"
                   th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></small>
           </div>
         </div>
 
+
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Raza</label>
           <div class="col-sm-6">
-            <input type="text" th:field="*{raza}" class="form-control"
-                   th:errorclass="'form-control alert-danger'" /> <small
-                  class="form-text text-danger"
-                  th:if="${#fields.hasErrors('raza')}" th:errors="*{raza}"></small>
+            <select class="form-control" th:field="*{raza}" th:errorclass="'form-control alert-danger'"  required>
+              <option value="">Seleccione una raza</option>
+              <option value="labrador">Sin definir</option>
+              <option value="labrador">Labrador</option>
+              <option value="bulldog">Bulldog</option>
+              <option value="pastor_aleman">Pastor Alemán</option>
+              <!-- agregar más opciones aquí -->
+            </select>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('raza')}" th:errors="*{raza}"></small>
           </div>
         </div>
 
@@ -42,17 +48,28 @@
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Color</label>
           <div class="col-sm-6">
-            <input type="text" th:field="*{color}" class="form-control"
+            <input type="text" th:field="*{color}" class="form-control"  required
                    th:errorclass="'form-control alert-danger'" /> <small
                   class="form-text text-danger"
                   th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></small>
           </div>
         </div>
 
+<!-- comento el peso , por que esto va ir en la librera
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Peso</label>
+          <div class="col-sm-6">
+            <input type="text" th:field="*{peso}" class="form-control"
+                   th:errorclass="'form-control alert-danger'" /> <small
+                  class="form-text text-danger"
+                  th:if="${#fields.hasErrors('peso')}" th:errors="*{peso}"></small>
+          </div>
+        </div>-->
+
         <div class="form-group row">
           <label class="col-sm-2 col-form-label">Observacion</label>
           <div class="col-sm-6">
-            <input type="text" th:field="*{observacion}" class="form-control"
+            <input type="text" th:field="*{observacion}" class="form-control"  required
                    th:errorclass="'form-control alert-danger'" /> <small
                   class="form-text text-danger"
                   th:if="${#fields.hasErrors('observacion')}" th:errors="*{observacion}"></small>
@@ -61,9 +78,22 @@
 
 
         <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Fecha de Nacimiento</label>
+          <div class="col-sm-6">
+            <input type="date" class="form-control" th:field="*{createAt}"  required
+                   th:errorclass="'form-control alert-danger'" /> <small
+                  class="form-text text-danger"
+                  th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
+          </div>
+        </div>
+
+        <div class="form-group row">
           <label class="col-sm-2 col-form-label">Foto</label>
           <div class="col-sm-6">
-          <input type="file" class="form-control" id="customFileLang" >
+            <input type="file" class="form-control-file" id="foto" name="foto"
+                   th:errorclass="'form-control alert-danger'" />
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('foto')}"
+                   th:errors="*{foto}"></small>
           </div>
         </div>
 
@@ -71,6 +101,10 @@
         <div class="form-group row">
           <div class="col-sm-6">
             <input type="submit" value="Crear Perro" class="btn btn-secondary" />
+          </div>
+
+          <div class="col-sm-6">
+            <a href="/home" class="btn btn-danger">Cancelar</a>
           </div>
         </div>
 

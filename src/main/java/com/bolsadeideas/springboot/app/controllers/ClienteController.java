@@ -56,14 +56,19 @@ public class ClienteController {
 		return "home";
 	}
 
+
+	//pagina de mantenimiento
+	@RequestMapping(value = "/mantenimiento", method = RequestMethod.GET)
+	public String mantenimiento(Model model) {
+		return "mantenimiento";
+	}
+
 	// metodo para veterinario
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
-	public String listar(Model model,HttpSession session) {
+	public String listar(Model model,HttpSession session,HttpServletRequest request) {
 
-		model.addAttribute("titulo", "Listado de clientes");
-		model.addAttribute("clientes", clienteService.findAll());
-
-
+		model.addAttribute("titulo", "Panel de veterinario para Administrar Clientes");
+		model.addAttribute("clientes", clienteService.findAllClientes() );
 
 		return "listar";
 	}
@@ -117,6 +122,8 @@ public class ClienteController {
 		}
 		String mensajeFlash = (cliente.getId_cliente() != null) ? "Cliente editado con éxito!" : "Cliente creado con éxito!";
 
+		cliente.setRol("CLIENTE");// genero el rol
+		cliente.setClave("1234");// clave generica
 		clienteService.save(cliente);
 		status.setComplete();
 		flash.addFlashAttribute("success", mensajeFlash);
@@ -134,12 +141,4 @@ public class ClienteController {
 	}
 
 
-	@RequestMapping(value = "/getPerros")
-	public String misPerros(Map<String, Object> model,HttpSession session) {
-		System.out.println("Cantidad de perros del clientes : 1 es : " + clienteService.findOne(1L).getPerro().size());
-		Cliente cliente = new Cliente();
-		model.put("cliente", cliente);
-		model.put("titulo", "Login del sistema");
-		return "login";
-	}
 }

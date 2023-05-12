@@ -16,6 +16,9 @@ public interface IClienteService {
     @Transactional(readOnly = true)
     Cliente buscarClientePorEmail(String email);
 
+    @Transactional(readOnly = true)
+    List<Cliente> findAllClientes();
+
     public void delete(Long id);
 	
 }
