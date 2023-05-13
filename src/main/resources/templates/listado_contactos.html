@@ -8,24 +8,23 @@
 <div class="container py-4">
 
   <div class="card bg-light">
-    <div class="card-header">Lista de veterinarias dosponibles.</div>
+    <div class="card-header">Lista de Contactos disponibles.</div>
     <div class="card-body">
-
-
       <table class="table table-striped">
         <thead>
         <tr>
-          <th>Horario</th>
-          <th>Nombre</th>
           <th>Direccion</th>
+          <th>Email</th>
+          <th>Telefono</th>
+          <th>Tipo</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each="v: ${veterinarias}">
-          <td th:text="${v.horario}"></td>
-          <td th:text="${v.nombre}"></td>
-          <td th:text="${v.direccion}"></td>
-
+        <tr th:each="c: ${contactos}">
+          <td th:text="${c.direccion}"></td>
+          <td th:text="${c.email}"></td>
+          <td th:text="${c.telefono}"></td>
+          <td th:text="${c.tipo}"></td>
         </tr>
         </tbody>
       </table>

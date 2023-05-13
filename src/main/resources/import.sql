@@ -21,14 +21,23 @@ INSERT INTO veterinarias (id , horario , nombre , direccion) VALUES(8, ' 24 hora
 
 
 /*PERROS */
-INSERT INTO perros (id_perro ,nombre,color , raza ,create_at,peso,observacion,foto,id_cliente) VALUES(1, 'Rocky', 'negro','unaRaza','2022-04-10','16Kg','una ubservacion','lasjdklasd',1);
-INSERT INTO perros (id_perro ,nombre,color , raza ,create_at,peso,observacion,foto,id_cliente) VALUES(2, 'Tobby', 'negro','unaRaza','2022-04-10','10Kg','una ubservacion','lasjdklasd',1);
-INSERT INTO perros (id_perro ,nombre,color , raza ,create_at,peso,observacion,foto,id_cliente) VALUES(5, 'Pichichus', 'negro','unaRaza','2022-04-10','17Kg','una ubservacion','lasjdklasd',1);
-INSERT INTO perros (id_perro ,nombre,color , raza ,create_at,peso,observacion,foto,id_cliente) VALUES(6, 'Manchita', 'negro','unaRaza','2022-04-10','11Kg','una ubservacion','lasjdklasd',1);
+INSERT INTO perros (id_perro ,nombre,color , raza ,create_at,peso,observacion,foto,id_cliente) VALUES(1, 'Rocky', 'negro','unaRaza','2022-04-10','16Kg','una ubservacion','lasjdklasd',3);
+INSERT INTO perros (id_perro ,nombre,color , raza ,create_at,peso,observacion,foto,id_cliente) VALUES(2, 'Tobby', 'negro','unaRaza','2022-04-10','10Kg','una ubservacion','lasjdklasd',3);
+INSERT INTO perros (id_perro ,nombre,color , raza ,create_at,peso,observacion,foto,id_cliente) VALUES(5, 'Pichichus', 'negro','unaRaza','2022-04-10','17Kg','una ubservacion','lasjdklasd',3);
+INSERT INTO perros (id_perro ,nombre,color , raza ,create_at,peso,observacion,foto,id_cliente) VALUES(6, 'Manchita', 'negro','unaRaza','2022-04-10','11Kg','una ubservacion','lasjdklasd',3);
 
 
 
-INSERT INTO perros (id_perro ,nombre,color , raza ,create_at,observacion,foto,id_cliente) VALUES(3, 'lolo', 'negro','unaRaza','2022-04-10','una ubservacion','lasjdklasd',2);
-INSERT INTO perros (id_perro ,nombre,color , raza ,create_at,observacion,foto,id_cliente) VALUES(4, 'Lalo', 'negro','unaRaza','2022-04-10','una ubservacion','lasjdklasd',2);
+
+/*CONTACTOS*/
+INSERT INTO contacto (id_contacto, telefono, direccion,email,tipo, create_at) VALUES(1, '1131234597', 'La Placa calle 1 y 50','matias@ohmydog.com','CUIDADOR','2017-08-28');
+INSERT INTO contacto (id_contacto, telefono, direccion,email,tipo, create_at) VALUES(2, '1131234597', 'La Placa calle 1 y 50','matias@ohmydog.com','PASEADOR','2017-08-28');
+INSERT INTO contacto (id_contacto, telefono, direccion,email,tipo, create_at) VALUES(3, '1131234597', 'La Placa calle 1 y 50','matias@ohmydog.com','PASEADOR','2017-08-28');
+INSERT INTO contacto (id_contacto, telefono, direccion,email,tipo, create_at) VALUES(4, '1131234597', 'La Placa calle 1 y 50','matias@ohmydog.com','CUIDADOR','2017-08-28');
+INSERT INTO contacto (id_contacto, telefono, direccion,email,tipo, create_at) VALUES(5, '1131234597', 'La Placa calle 1 y 50','matias@ohmydog.com','PASEADOR','2017-08-28');
+INSERT INTO contacto (id_contacto, telefono, direccion,email,tipo, create_at) VALUES(6, '1131234597', 'La Placa calle 1 y 50','matias@ohmydog.com','CUIDADOR','2017-08-28');
+INSERT INTO contacto (id_contacto, telefono, direccion,email,tipo, create_at) VALUES(7, '1131234597', 'La Placa calle 1 y 50','matias@ohmydog.com','PASEADOR','2017-08-28');
+INSERT INTO contacto (id_contacto, telefono, direccion,email,tipo, create_at) VALUES(8, '1131234597', 'La Placa calle 1 y 50','matias@ohmydog.com','CUIDADOR','2017-08-28');
+INSERT INTO contacto (id_contacto, telefono, direccion,email,tipo, create_at) VALUES(9, '1131234597', 'La Placa calle 1 y 50','matias@ohmydog.com','PASEADOR','2017-08-28');
 
 
