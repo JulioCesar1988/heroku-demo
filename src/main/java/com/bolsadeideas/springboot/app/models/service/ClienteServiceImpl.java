@@ -3,6 +3,7 @@ package com.bolsadeideas.springboot.app.models.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,6 +35,28 @@ public class ClienteServiceImpl implements IClienteService {
 	public Cliente findOne(Long id) {
 		// TODO Auto-generated method stub
 		return clienteDao.findById(id).orElse(null);
+	}
+
+
+	@Override
+	@Transactional(readOnly = true)
+	public Cliente buscarClientePorEmail(String email) {
+		Cliente c = null ;
+		List<Cliente> lista = (List<Cliente>) clienteDao.findAll();
+		for (int i = 0; i <lista.size() ; i++) {
+			if (lista.get(i).getEmail().equals(email)){
+				c = lista.get(i);
+				return c;
+			}
+		}
+		return c;
+	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public List<Cliente> findAllClientes() {
+
+		return  (List<Cliente>) clienteDao.findAll();
 	}
 
 	@Override
