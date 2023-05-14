@@ -32,6 +32,9 @@ public class Cliente implements Serializable {
 	@OneToMany(mappedBy = "cliente")
 	private List<Perro> perro;
 
+	@OneToMany(mappedBy = "autor")
+	private List<Adopcion> adopcion;
+
 	@NotEmpty
 	private String dni;
 

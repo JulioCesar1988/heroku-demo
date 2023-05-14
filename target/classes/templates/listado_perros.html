@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container py-4">
+
+    <div class="card bg-light">
+        <!--<div class="card-header" th:text="${titulo}"></div>-->
+        <div class="card-body">
+
+
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>id_cliente</th>
+                    <th>nombre de dueño</th>
+                    <th>nombre</th>
+                    <th>id_cliente</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="p: ${perros}">
+                    <td th:text="${p.cliente.id_cliente}"></td>
+                    <td th:text="${p.cliente.nombre}"></td>
+                    <td th:text="${p.nombre}"></td>
+                    <td th:text="${p.observacion}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

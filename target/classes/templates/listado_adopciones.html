@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+</head>
+
+<body>
+  <header th:replace="layout/layout :: header"></header>
+
+  <div class="container py-4">
+      <div class="card-header" th:text="${titulo}"></div>
+
+      <br>
+      <div class="text-lg-right">
+          <a class="btn btn-primary" th:href="@{/formularioAdopcion}" role="button">Agregar Nueva Adopción</a>
+      </div>
+      <br>
+
+      <div class="ui-gap">
+          <div class="ui-block-item">
+
+              <div class="ui-item" th:each="a: ${adopciones}" th:attrappend="title=${!a.adoptado}?'Contactar'">
+                  <div th:if="${a.adoptado == false}" class="ui-image" th:style="'background-image: url(images/adoptame.jpg);'"></div>
+                  <div th:if="${a.adoptado == true}" class="ui-image" th:style="'background-image: url(images/adoptado.jpg);'"></div>
+
+                  <div class="ui-block-text">
+                      <h3 th:text="${a.raza}"></h3>
+                      <div class="ui-more-info">
+
+                          <div class="info-perro-container">
+                              <p class="info-perro">Color: <span th:text="${#strings.capitalize(a.color)}"></span></p>
+                              <p class="info-perro">Tamaño: <span th:text="${#strings.capitalize(a.tamanio)}"></span></p>
+                          </div>
+
+                          <div class="ui-small-section">
+                              <div class="ui-small-section">
+                                  <img class="ui-author" src="images/anonimo.png" alt="">
+                                  <span th:text="${a.autor.nombre}"></span> <span th:text="${a.autor.apellido}"></span>
+                              </div>
+                          </div>
+
+                      </div>
+                      <br>
+                      <!--<div class="text-center">
+                        <button type="button" class="btn btn-primary btn-sm">Contactar</button>
+                      </div>-->
+
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+
+
+  </div>
+
+
+  <footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
