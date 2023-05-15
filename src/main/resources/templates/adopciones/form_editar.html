@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="layout/layout :: head"></head>
+
+    <body>
+        <header th:replace="layout/layout :: header"></header>
+
+        <div class="container py-4">
+            <div class="card bg-dark text-white">
+                <div class="card-header" th:text="${titulo}"></div>
+                <div class="card-body">
+
+                    <div th:object="${adopcion}" th:remove="tag">
+                        <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                            <li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+                        </ul>
+                    </div>
+
+                    <form th:action="@{/adopciones/actualizar}" th:object="${adopcion}" method="post" enctype="multipart/form-data">
+
+                        <h5>Datos del Perro</h5>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Raza</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" th:field="*{raza}" th:errorclass="'form-control alert-danger'" required>
+                                    <option value="">Seleccione una raza</option>
+                                    <option value="Bulldog">Bulldog</option>
+                                    <option value="Chihuahua">Chihuahua</option>
+                                    <option value="Caniche">Caniche</option>
+                                    <option value="Labrador">Labrador</option>
+                                    <option value="Mestizo">Mestizo</option>
+                                    <option value="Pastor Alemán">Pastor Alemán</option>
+                                    <option value="San Bernardo">San Bernardo</option>
+                                    <option value="Sin definir">Sin definir</option>
+                                    <option value="Terrier">Terrier</option>
+                                    <!-- agregar más opciones aquí -->
+                                </select>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('raza')}" th:errors="*{raza}"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Tamaño</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" th:field="*{tamanio}" th:errorclass="'form-control alert-danger'" required>
+                                    <option value="">Seleccione una tamaño</option>
+                                    <option value="Pequeño">Pequeño</option>
+                                    <option value="Mediano">Mediano</option>
+                                    <option value="Grande">Grande</option>
+                                    <option value="Muy grande">Muy grande</option>
+                                </select>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('tamanio')}" th:errors="*{tamanio}"></small>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Género</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" th:field="*{genero}" th:errorclass="'form-control alert-danger'" required>
+                                    <option value="">Seleccione una género</option>
+                                    <option value="Hembra">Hembra</option>
+                                    <option value="Macho">Macho</option>
+                                    <option value="Sin definir">Sin definir</option>
+                                </select>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></small>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Color</label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{color}" class="form-control" required th:errorclass="'form-control alert-danger'"/>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('color')}" th:errors="*{color}"></small>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Edad</label>
+                            <div class="col-sm-6">
+                                <input type="text" th:field="*{edad}" class="form-control"  required th:errorclass="'form-control alert-danger'"/>
+                                <small class="form-text text-danger" th:if="${#fields.hasErrors('edad')}" th:errors="*{edad}"></small>
+                            </div>
+                        </div>
+
+                        <div class="form-check">
+                            <input id="adoptado" class="form-check-input" type="checkbox" name="adoptado" th:field="*{adoptado}">
+                            <label class="form-check-label" for="adoptado">
+                                Agregar datos del adoptante
+                            </label>
+                        </div>
+
+                        <input th:type="hidden" th:field="*{id_adopcion}"/>
+
+                        <br><br>
+                        <div id="adoptante" th:style="${ adoptado == true ? 'display:block' : 'display:none'}">
+
+                            <h5>Datos del Adoptante</h5>
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Nombre completo</label>
+                                <div class="col-sm-6">
+                                    <input id="nombreCompleto" type="text" th:field="*{nombreCompletoAdoptante}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+                                    <small class="form-text text-danger" th:if="${#fields.hasErrors('nombreCompletoAdoptante')}" th:errors="*{nombreCompletoAdoptante}"></small>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Teléfono</label>
+                                <div class="col-sm-6">
+                                    <input id="telefono" type="text" th:field="*{telefonoAdoptante}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+                                    <small class="form-text text-danger" th:if="${#fields.hasErrors('telefonoAdoptante')}" th:errors="*{telefonoAdoptante}"></small>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">E-mail</label>
+                                <div class="col-sm-6">
+                                    <input id="email" type="text" th:field="*{emailAdoptante}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+                                    <small class="form-text text-danger" th:if="${#fields.hasErrors('emailAdoptante')}" th:errors="*{emailAdoptante}"></small>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+
+                        <br>
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <input type="submit" value="Modificar Adopción" class="btn btn-secondary" />
+                            </div>
+
+                            <div class="col-sm-6 text-right">
+                                <a class="btn btn-danger btn-sm" role="button" th:href="@{/adopciones/misPublicaciones}">Cancelar</a>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <footer th:replace="layout/layout :: footer"></footer>
+        <script th:src="@{/js/adopciones/editar.js}"></script>
+
+    </body>
+
+</html>

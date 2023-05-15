@@ -1,6 +1,7 @@
 package com.bolsadeideas.springboot.app.models.entity;
 
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -9,8 +10,8 @@ import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Date;
 
-@Data
 @Entity
+@Data
 @Table(name = "adopciones")
 public class Adopcion implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -19,31 +20,48 @@ public class Adopcion implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_adopcion;
 
+
     @NotEmpty
     private String raza;
+
 
     @NotEmpty
     private String tamanio;
 
+
     @NotEmpty
     private String color;
 
-    @Column(columnDefinition="tinyint(1) default 0")
-    private Boolean adoptado;
+
+    @NotEmpty
+    private String edad;
+
+
+    @NotEmpty
+    private String genero;
+
+
+    @Column(columnDefinition="tinyint(1) default 0", nullable = false)
+    private boolean adoptado;
+
 
     @Column(name = "fecha_adopcion", nullable = true)
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date fechaAdopcion;
 
+
     @Column(name = "nombre_completo_adoptante", nullable = true)
     private String nombreCompletoAdoptante;
+
 
     @Column(name = "telefono_adoptante", nullable = true)
     private String telefonoAdoptante;
 
+
     @Column(name = "email_adoptante", nullable = true)
     private String emailAdoptante;
+
 
     @Column(name = "fecha_creacion", nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
@@ -51,12 +69,14 @@ public class Adopcion implements Serializable {
     @CreationTimestamp
     private Date fechaCreacion;
 
+
     @Column(name = "fecha_borrado", nullable = true)
     @Temporal(TemporalType.TIMESTAMP)
     @DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date fechaBorrado;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_cliente", nullable = false)
     private Cliente autor;
 
@@ -92,7 +112,19 @@ public class Adopcion implements Serializable {
     public void setColor(String color) {
         this.color = color;
     }
+    public String getEdad() {
+        return edad;
+    }
 
+    public void setEdad(String edad) {
+        this.edad = edad;
+    }
+    public String getGenero() {
+        return genero;
+    }
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
     public Boolean getAdoptado() {
         return adoptado;
     }

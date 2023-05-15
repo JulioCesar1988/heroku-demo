@@ -3,9 +3,10 @@
 <head th:replace="layout/layout :: head"></head>
 <body>
 <header th:replace="layout/layout :: header"></header>
+
 <div class="container">
     <h2>Login (para poder ingresar al sistema necesita inciar sesion).</h2>
-    <form th:action="@{/login}" method="post">
+    <form th:action="@{/validarLogin}" method="post">
         <div class="form-group">
             <label for="email">Email:</label>
             <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">

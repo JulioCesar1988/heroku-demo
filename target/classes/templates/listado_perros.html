@@ -8,28 +8,41 @@
 <div class="container py-4">
 
     <div class="card bg-light">
-        <!--<div class="card-header" th:text="${titulo}"></div>-->
+
+        <p>Listado de tus Perros</p>
         <div class="card-body">
-
-
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th>id_cliente</th>
-                    <th>nombre de dueño</th>
                     <th>nombre</th>
-                    <th>id_cliente</th>
+                    <th>raza</th>
+                    <th>color</th>
+                    <th>observacion</th>
+                    <th>fecha nacimiento</th>
+                    <th>acciones</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="p: ${perros}">
-                    <td th:text="${p.cliente.id_cliente}"></td>
-                    <td th:text="${p.cliente.nombre}"></td>
+                    <!--<td>
+                        <img th:src="${p.foto}" width="100" height="100" />
+                    </td>-->
                     <td th:text="${p.nombre}"></td>
+                    <td th:text="${p.raza}"></td>
+                    <td th:text="${p.color}"></td>
                     <td th:text="${p.observacion}"></td>
+                    <td th:text="${p.createAt}"></td>
+                    <td>
+                        <button type="button" class="btn btn-primary">Pedir Turno</button>
+                        <button type="button" class="btn btn-info">Ver</button>
+                        <button type="button" class="btn btn-warning">Editar</button>
+                        <button type="button" class="btn btn-danger">Eliminar</button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
+
+            <a class="btn btn-primary" th:href="@{/formularioPerro}" role="button">Agregar Nuevo Perro</a>
         </div>
     </div>
 </div>

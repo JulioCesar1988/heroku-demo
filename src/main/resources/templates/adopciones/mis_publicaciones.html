@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container py-4">
+
+    <div class="card bg-light">
+
+        <p th:text="${titulo}"></p>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Raza</th>
+                        <th>Color</th>
+                        <th>Edad</th>
+                        <th>Tamaño</th>
+                        <th>Género</th>
+                        <th>Fecha de publicación</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="a: ${adopciones}">
+                        <td th:text="${a.raza}"></td>
+                        <td th:text="${a.color}"></td>
+                        <td th:text="${a.edad}"></td>
+                        <td th:text="${a.tamanio}"></td>
+                        <td th:text="${a.genero}"></td>
+                        <td th:text="${#dates.format(a.fechaCreacion, 'dd-MM-yyyy HH:mm:ss')}"></td>
+                        <td th:text="${a.adoptado} ? 'Adoptado' : 'No adoptado'"></td>
+                        <td>
+                            <a class="btn btn-info btn-sm" role="button" th:href="@{/adopciones/detalle/{id}(id = ${a.id_adopcion})}" >Ver</a>
+                            <a class="btn btn-warning btn-sm" role="button" th:href="@{/adopciones/editar/{id}(id=${a.id_adopcion})}">Editar</a>
+                            <a class="btn btn-danger btn-sm" role="button" th:href="@{/adopciones/eliminar/{id}(id = ${a.id_adopcion})}" >Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a class="btn btn-primary btn-sm" th:href="@{/adopciones/nuevo}" role="button">Nueva Adopción</a>
+        </div>
+    </div>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
