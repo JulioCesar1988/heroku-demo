@@ -1,0 +1,14 @@
+.separator{
+    border:         none;
+    border-right:    1px solid hsla(200, 10%, 50%,100);
+    width:          1px;
+}
+
+.btn-corner{
+    position: absolute;
+    right: -68px;
+    float: right;
+    bottom: 0;
+    display: flex;
+    align-items: flex-end;
+}

@@ -14,8 +14,9 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>Nombre</th>
                         <th>Raza</th>
-                        <th>Color</th>
+<!--                        <th>Color</th>-->
                         <th>Edad</th>
                         <th>Tamaño</th>
                         <th>Género</th>
@@ -26,8 +27,9 @@
                 </thead>
                 <tbody>
                     <tr th:each="a: ${adopciones}">
+                        <td th:text="${a.nombre}"></td>
                         <td th:text="${a.raza}"></td>
-                        <td th:text="${a.color}"></td>
+<!--                        <td th:text="${a.color}"></td>-->
                         <td th:text="${a.edad}"></td>
                         <td th:text="${a.tamanio}"></td>
                         <td th:text="${a.genero}"></td>

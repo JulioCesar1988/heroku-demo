@@ -6,13 +6,13 @@
       <header th:replace="layout/layout :: header"></header>
 
       <div class="container py-4">
-          <div class="card-header" th:text="${titulo}"></div>
-
-          <!--<br>
-          <div class="text-lg-right">
-              <a class="btn btn-primary" th:href="@{/formularioAdopcion}" role="button">Agregar Nueva Adopción</a>
+          <div class="text-center">
+              <img th:src="@{/images/adoptanocompres.png}" width="80%" height="270" class="d-inline-block align-top" alt="">
           </div>
-          <br>-->
+          <br>
+          <hr style="border: 1px solid #caa7a7;">
+          <br>
+<!--          <h1 class="card-header" th:text="${titulo}"></h1>-->
 
           <div class="ui-gap">
               <div class="ui-block-item">
@@ -21,30 +21,39 @@
                       <div th:if="${a.adoptado == false}" class="ui-image" th:style="'background-image: url(images/adoptame.jpg);'"></div>
                       <div th:if="${a.adoptado == true}" class="ui-image" th:style="'background-image: url(images/adoptado.jpg);'"></div>
 
+                      <!--<img th:if="${a.adoptado == false}" th:src="@{/images/adoptame.jpg}" width="100%" height="50%" class="d-inline-block align-top" alt="">
+                      <img th:if="${a.adoptado == true}" th:src="@{/images/adoptado.jpg}" width="100%" height="50%" class="d-inline-block align-top" alt="">-->
+
                       <div class="ui-block-text">
-                          <h3 th:text="${a.raza}"></h3>
+                          <h3 th:text="${a.nombre}"></h3>
                           <div class="ui-more-info">
 
                               <div class="info-perro-container">
-                                  <p class="info-perro">Color: <span th:text="${#strings.capitalize(a.color)}"></span></p>
-                                  <p class="info-perro">Tamaño: <span th:text="${#strings.capitalize(a.tamanio)}"></span></p>
-                                  <p class="info-perro">Edad: <span th:text="${#strings.capitalize(a.edad)}"></span></p>
-                                  <p class="info-perro">Género: <span th:text="${#strings.capitalize(a.genero)}"></span></p>
-                                  <p class="info-perro">Fecha publicación: <span th:text="${#dates.format(a.fechaCreacion, 'dd-MM-yyyy')}"></span></p>
+                                  <span th:text="${#strings.capitalize(#strings.toLowerCase(a.raza))}"></span>,
+                                  <span th:text="${#strings.capitalize(#strings.toLowerCase(a.genero))}"></span>,
+                                  <span th:text="${#strings.capitalize(#strings.toLowerCase(a.color))}"></span>,
+                                  <span th:text="${#strings.capitalize(#strings.toLowerCase(a.tamanio))}"></span>,
+                                  <span th:text="${#strings.capitalize(#strings.toLowerCase(a.edad))}"></span>
                               </div>
 
                               <div class="ui-small-section">
                                   <div class="ui-small-section">
                                       <img class="ui-author" src="images/anonimo.png" alt="">
-                                      <span th:text="${a.autor.nombre}"></span> <span th:text="${a.autor.apellido}"></span>
+                                      <span th:text="${#strings.capitalize(#strings.toLowerCase(a.autor.nombre))}"></span>
+                                      <span th:text="${#strings.capitalize(#strings.toLowerCase(a.autor.apellido))}"></span>
                                   </div>
+                              </div>
+
+                              <div style="font-size:13px; opacity: 0.6;">
+                                  Publicado el <span th:text="${#dates.format(a.fechaCreacion, 'dd-MM-yyyy')}"></span>
                               </div>
 
                           </div>
                           <br>
-                          <!--<div class="text-center">
-                            <button type="button" class="btn btn-primary btn-sm">Contactar</button>
-                          </div>-->
+                          <div class="text-center">
+                            <a class="btn btn-warning btn-sm" role="button" th:href="@{/adopciones/info-adopcion/{id}(id=${a.id_adopcion})}">Ver más</a>
+                            <a th:if="${a.adoptado == false}" class="btn btn-warning btn-sm" role="button" th:href="@{/adopciones/adoptame/{id}(id=${a.id_adopcion})}">Adóptame</a>
+                          </div>
 
                       </div>
                   </div>

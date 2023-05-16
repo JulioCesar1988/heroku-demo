@@ -22,6 +22,10 @@ public class Adopcion implements Serializable {
 
 
     @NotEmpty
+    private String nombre;
+
+
+    @NotEmpty
     private String raza;
 
 
@@ -81,12 +85,23 @@ public class Adopcion implements Serializable {
     private Cliente autor;
 
 
+    @NotEmpty
+    private String telefono;
+
     public Long getId_adopcion() {
         return id_adopcion;
     }
 
     public void setId_adopcion(Long id_adopcion) {
         this.id_adopcion = id_adopcion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public String getRaza() {
@@ -188,4 +203,13 @@ public class Adopcion implements Serializable {
     public void setAutor(Cliente autor) {
         this.autor = autor;
     }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
 }

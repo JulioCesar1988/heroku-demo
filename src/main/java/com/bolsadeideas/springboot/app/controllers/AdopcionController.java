@@ -32,7 +32,7 @@ public class AdopcionController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String listarAdopciones(Model model) {
-        model.addAttribute("titulo", "Listado de adopciones");
+        model.addAttribute("titulo", "Perros en adopción");
         model.addAttribute("adopciones", adopcionService.findAll());
         return "adopciones/listado";
     }
@@ -86,7 +86,7 @@ public class AdopcionController {
         }
         model.put("adopcion", adopcion);
         model.put("titulo", "Detalle de la adopción");
-        return "adopciones/show";
+        return "adopciones/show_detalle_publicacion";
     }
 
 
@@ -105,6 +105,7 @@ public class AdopcionController {
         Adopcion adopcion = null;
         if (id > 0) {
             adopcion = adopcionService.findOne(id);
+            System.out.println("Adopcion recuperada: " + adopcion);
             if (adopcion == null) {
                 flash.addFlashAttribute("error", "El ID de la adopción no existe en la BBDD!");
                 return "redirect:/adopciones/misPublicaciones";
@@ -121,16 +122,15 @@ public class AdopcionController {
 
     @RequestMapping(value = "/actualizar", method = RequestMethod.POST)
     public String actualizar(@Valid Adopcion adopcion, BindingResult result, Map<String, Object> model, RedirectAttributes flash, SessionStatus status, HttpSession session) throws IOException {
-        System.out.println("adopcion: " + adopcion);
-
         Adopcion adopcionUpdate = adopcionService.findOne((long) adopcion.getId_adopcion());
-        //System.out.println("adopcionUpdate: " + adopcionUpdate);
 
+        adopcionUpdate.setNombre(adopcion.getNombre());
         adopcionUpdate.setRaza(adopcion.getRaza());
         adopcionUpdate.setColor(adopcion.getColor());
         adopcionUpdate.setTamanio(adopcion.getTamanio());
         adopcionUpdate.setEdad(adopcion.getEdad());
         adopcionUpdate.setGenero(adopcion.getGenero());
+        adopcionUpdate.setTelefono(adopcion.getTelefono());
 
         if(adopcion.getAdoptado() == true){
             if( adopcion.getNombreCompletoAdoptante() != null &&
@@ -160,6 +160,26 @@ public class AdopcionController {
         status.setComplete();
         flash.addFlashAttribute("success", mensajeFlash);
         return "redirect:/adopciones/misPublicaciones";
+    }
+
+
+    @RequestMapping(value = "/info-adopcion/{id}", method = RequestMethod.GET)
+    public String detalleAdoptar(@PathVariable("id") Long id, Map<String, Object> model, RedirectAttributes flash, HttpSession session) {
+        Adopcion adopcion = null;
+        if (id > 0) {
+            adopcion = adopcionService.findOne(id);
+            System.out.println("Adopcion co datos: " + adopcion);
+            if (adopcion == null) {
+                flash.addFlashAttribute("error", "El ID de la adopción no existe en la BBDD!");
+                return "redirect:/adopciones";
+            }
+        } else {
+            flash.addFlashAttribute("error", "El ID de la adopción no puede ser cero!");
+            return "redirect:/adopciones";
+        }
+        model.put("adopcion", adopcion);
+        model.put("titulo", "Detalle de la publicación");
+        return "adopciones/show_detalle_adoptar";
     }
 
 }
