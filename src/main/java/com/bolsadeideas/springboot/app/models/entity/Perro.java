@@ -1,6 +1,9 @@
 package com.bolsadeideas.springboot.app.models.entity;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.bolsadeideas.springboot.app.models.service.LibretaSanitariaService;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -35,6 +38,17 @@ public class Perro {
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
+    
+    @OneToOne
+    @JoinColumn(name = "id-libreta")
+    private LibretaSanitariaService libretasanitaria;
 
+	public LibretaSanitariaService getLibretasanitaria() {
+		return libretasanitaria;
+	}
+
+	public long getEdad() {
+		return 0;
+	}
 
 }

@@ -31,7 +31,7 @@ public class ClienteController {
 	public String home(Model model) {
 		model.addAttribute("titulo", "Listado de clientes");
 		model.addAttribute("clientes", clienteService.findAll());
-		System.out.println("cantidad de perros " + clienteService.findOne(1L).getPerro().size());
+		//System.out.println("cantidad de perros " + clienteService.findOne(1L).getPerro().size());
 		return "home";
 	}
 
@@ -40,9 +40,6 @@ public class ClienteController {
 	public String listar(Model model) {
 		model.addAttribute("titulo", "Listado de clientes");
 		model.addAttribute("clientes", clienteService.findAll());
-
-
-
 		return "listar";
 	}
 
@@ -93,11 +90,11 @@ public class ClienteController {
 			model.addAttribute("titulo", "Formulario de Cliente");
 			return "form";
 		}
-		String mensajeFlash = (cliente.getId_cliente() != null) ? "Cliente editado con éxito!" : "Cliente creado con éxito!";
+		//String mensajeFlash = (cliente.getId_cliente() != null) ? "Cliente editado con éxito!" : "Cliente creado con éxito!";
 
 		clienteService.save(cliente);
 		status.setComplete();
-		flash.addFlashAttribute("success", mensajeFlash);
+		//flash.addFlashAttribute("success", mensajeFlash);
 		return "redirect:listar";
 	}
 
@@ -114,7 +111,7 @@ public class ClienteController {
 
 	@RequestMapping(value = "/getPerros")
 	public String misPerros(Map<String, Object> model) {
-		System.out.println("Cantidad de perros del clientes : 1 es : " + clienteService.findOne(1L).getPerro().size());
+		//System.out.println("Cantidad de perros del clientes : 1 es : " + clienteService.findOne(1L).getPerro().size());
 		Cliente cliente = new Cliente();
 		model.put("cliente", cliente);
 		model.put("titulo", "Login del sistema");
