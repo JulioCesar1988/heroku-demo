@@ -16,100 +16,75 @@
                         </ul>
                     </div>
 
-                    <form>
-                        <h5>Datos del perro </h5> <br>
 
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label col-form-label-sm">Nombre</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-plaintext form-control-sm" th:text="${adopcion.nombre}"></p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label col-form-label-sm">Raza</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-plaintext form-control-sm" th:text="${adopcion.raza}"></p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label col-form-label-sm">Color</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-plaintext form-control-sm" th:text="${adopcion.color}"></p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label col-form-label-sm">Edad</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-plaintext form-control-sm" th:text="${adopcion.edad}"></p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label col-form-label-sm">Género</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-plaintext form-control-sm" th:text="${adopcion.genero}"></p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label col-form-label-sm">Tamaño</label>
-                            <div class="col-md-9">
-                                <p class="form-control-plaintext form-control-sm"th:text="${adopcion.tamanio}"></p>
-                            </div>
+                    <div class="row">
+
+                        <div class="col-md-3 separator">
+                            <img th:if="${adopcion.adoptado == false}" th:src="@{/images/adoptame.jpg}" width="100%" height="75%" class="d-inline-block align-top" alt="">
+                            <img th:if="${adopcion.adoptado == true}" th:src="@{/images/adoptado.jpg}" width="100%" height="65%" class="d-inline-block align-top" alt="">
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label col-form-label-sm">Fecha de publicación</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-plaintext form-control-sm" th:text="${#dates.format(adopcion.fechaCreacion, 'dd-MM-yyyy HH:mm:ss')}"></p>
-                            </div>
+                        <div class="col-md-4 separator">
+                            <h4 th:text="${#strings.toUpperCase(adopcion.nombre)}"></h4>
+                            <p>Perro en adopción</p>
+                            <p th:text="${#strings.capitalize(#strings.toLowerCase(adopcion.raza))}"></p>
+                            <table class="table table-sm">
+                                <tbody>
+                                <tr>
+                                    <td>Género</td>
+                                    <td th:text="${#strings.capitalize(#strings.toLowerCase(adopcion.genero))}"></td>
+                                </tr>
+                                <tr>
+                                    <td>Edad</td>
+                                    <td th:text="${#strings.capitalize(#strings.toLowerCase(adopcion.edad))}"></td>
+                                </tr>
+                                <tr>
+                                    <td>Tamaño</td>
+                                    <td th:text="${#strings.capitalize(#strings.toLowerCase(adopcion.tamanio))}"></td>
+                                </tr>
+                                <tr>
+                                    <td>Color</td>
+                                    <td th:text="${#strings.capitalize(#strings.toLowerCase(adopcion.color))}"></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <br>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label col-form-label-sm">Estado</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-plaintext form-control-sm" th:text="${adopcion.adoptado} ? 'Adoptado' : 'No adoptado'"></p>
+                        <div class="col-md-4">
+                            <h4>SOBRE EL PROTECTOR</h4>
+                            <p class="info">Nombre completo:
+                                <span th:text="${#strings.capitalize(#strings.toLowerCase(adopcion.autor.nombre))}"></span>
+                                <span th:text="${#strings.capitalize(#strings.toLowerCase(adopcion.autor.apellido))}"></span>
+                            </p>
+                            <p class="info">Email: <span th:text="${adopcion.autor.email}"></span></p>
+                            <p class="info">Teléfono: <span th:text="${adopcion.telefono}"></span></p>
+                            <div class="info" style="font-size:13px; opacity: 0.6;">
+                                Publicado el <span th:text="${#dates.format(adopcion.fechaCreacion, 'dd-MM-yyyy')}"></span>
                             </div>
-                        </div>
+                            <hr>
 
-                        <div class="form-group row">
-                            <label class="col-sm-3 col-form-label col-form-label-sm">Telefóno</label>
-                            <div class="col-sm-9">
-                                <p class="form-control-plaintext form-control-sm" th:text="${adopcion.telefono}"></p>
-                            </div>
-                        </div>
-
-
-
-                        <div th:if="${adopcion.adoptado}">
-                            <h5>Datos del adoptante </h5> <br>
-                            <div class="form-group row">
-                                <label class="col-md-3 col-form-label col-form-label-sm">Nombre completo</label>
-                                <div class="col-md-9">
-                                    <p class="form-control-plaintext form-control-sm"th:text="${adopcion.nombreCompletoAdoptante}"></p>
+                            <div th:if="${adopcion.adoptado == true}">
+                                <h4>SOBRE EL ADOPTANTE</h4>
+                                <p class="info">Nombre completo:
+                                    <span th:text="${#strings.capitalize(#strings.toLowerCase(adopcion.nombreCompletoAdoptante))}"></span>
+                                </p>
+                                <p class="info">Email: <span th:text="${adopcion.emailAdoptante}"></span></p>
+                                <p class="info">Teléfono: <span th:text="${adopcion.telefonoAdoptante}"></span></p>
+                                <div class="info" style="font-size:13px; opacity: 0.6;">
+                                    Adoptado el <span th:text="${#dates.format(adopcion.fechaAdopcion, 'dd-MM-yyyy')}"></span>
                                 </div>
+                                <br>
                             </div>
 
-                            <div class="form-group row">
-                                <label class="col-md-3 col-form-label col-form-label-sm">Teléfono</label>
-                                <div class="col-md-9">
-                                    <p class="form-control-plaintext form-control-sm"th:text="${adopcion.telefonoAdoptante}"></p>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 col-form-label col-form-label-sm">E-mail</label>
-                                <div class="col-md-9">
-                                    <p class="form-control-plaintext form-control-sm"th:text="${adopcion.emailAdoptante}"></p>
-                                </div>
-                            </div>
                         </div>
 
-                        <div class="text-right">
-                            <a class="btn btn-warning btn-sm" role="button" th:href="@{/adopciones/editar/{id}(id=${adopcion.id_adopcion})}">Editar</a>
-                            <a class="btn btn-primary btn-sm" role="button" th:href="@{/adopciones/misPublicaciones}">Volver</a>
-                        </div>
+                    </div>
 
-                    </form>
-
+                    <div class="text-right">
+                        <a class="btn btn-warning btn-sm" role="button" th:href="@{/adopciones/editar/{id}(id=${adopcion.id_adopcion})}">Editar</a>
+                        <a class="btn btn-primary btn-sm" role="button" th:href="@{/adopciones/misPublicaciones}">Volver</a>
+                    </div>
 
                 </div>
             </div>

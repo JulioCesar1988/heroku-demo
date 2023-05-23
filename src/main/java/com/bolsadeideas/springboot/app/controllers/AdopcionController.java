@@ -164,11 +164,10 @@ public class AdopcionController {
 
 
     @RequestMapping(value = "/info-adopcion/{id}", method = RequestMethod.GET)
-    public String detalleAdoptar(@PathVariable("id") Long id, Map<String, Object> model, RedirectAttributes flash, HttpSession session) {
+    public String detalleAdoptar(@PathVariable("id") Long id, Map<String, Object> model, RedirectAttributes flash) {
         Adopcion adopcion = null;
         if (id > 0) {
             adopcion = adopcionService.findOne(id);
-            System.out.println("Adopcion co datos: " + adopcion);
             if (adopcion == null) {
                 flash.addFlashAttribute("error", "El ID de la adopción no existe en la BBDD!");
                 return "redirect:/adopciones";
@@ -181,5 +180,24 @@ public class AdopcionController {
         model.put("titulo", "Detalle de la publicación");
         return "adopciones/show_detalle_adoptar";
     }
+
+    @RequestMapping(value = "/adoptame/{id}")
+    public String contactar(@PathVariable("id") Long id, Map<String, Object> model, RedirectAttributes flash) {
+        Adopcion adopcion = null;
+        if (id > 0) {
+            adopcion = adopcionService.findOne(id);
+            if (adopcion == null) {
+                flash.addFlashAttribute("error", "El ID de la adopción no existe en la BBDD!");
+                return "redirect:/adopciones";
+            }
+        } else {
+            flash.addFlashAttribute("error", "El ID de la adopción no puede ser cero!");
+            return "redirect:/adopciones";
+        }
+        model.put("adopcion", adopcion);
+        model.put("titulo", "Contactar");
+        return "adopciones/form_contactar";
+    }
+
 
 }

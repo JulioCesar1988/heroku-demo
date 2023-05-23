@@ -19,8 +19,8 @@
             <div class="row">
 
                 <div class="col-md-3 separator">
-                    <img th:if="${adopcion.adoptado == false}" th:src="@{/images/adoptame.jpg}" width="100%" height="80%" class="d-inline-block align-top" alt="">
-                    <img th:if="${adopcion.adoptado == true}" th:src="@{/images/adoptado.jpg}" width="100%" height="80%" class="d-inline-block align-top" alt="">
+                    <img th:if="${adopcion.adoptado == false}" th:src="@{/images/adoptame.jpg}" width="100%" height="75%" class="d-inline-block align-top" alt="">
+                    <img th:if="${adopcion.adoptado == true}" th:src="@{/images/adoptado.jpg}" width="100%" height="65%" class="d-inline-block align-top" alt="">
                 </div>
 
                 <div class="col-md-4 separator">
@@ -50,24 +50,43 @@
                         </tbody>
                     </table>
                     <br>
-                    <a th:if="${adopcion.adoptado == false}" class="text-center col col-12 btn btn-warning" role="button" th:href="@{/adopciones/adoptame/{id}(id=${adopcion.id_adopcion})}">Adóptame</a>
+<!--                    <a th:if="${adopcion.adoptado == false}" class="text-center col col-12 btn btn-warning" role="button" th:href="@{/adopciones/adoptame/{id}(id=${adopcion.id_adopcion})}">Adóptame</a>-->
 
                 </div>
 
                 <div class="col-md-4">
                     <h4>SOBRE EL PROTECTOR</h4>
-                    <p>Nombre completo:
+                    <p class="info">Nombre completo:
                         <span th:text="${#strings.capitalize(#strings.toLowerCase(adopcion.autor.nombre))}"></span>
                         <span th:text="${#strings.capitalize(#strings.toLowerCase(adopcion.autor.apellido))}"></span>
                     </p>
-                    <p>Email: <span th:text="${adopcion.autor.email}"></span></p>
-                    <p>Teléfono: <span th:text="${adopcion.telefono}"></span></p>
+                    <p class="info">Email: <span th:text="${adopcion.autor.email}"></span></p>
+                    <p class="info">Teléfono: <span th:text="${adopcion.telefono}"></span></p>
+                    <div class="info" style="font-size:13px; opacity: 0.6;">
+                        Publicado el <span th:text="${#dates.format(adopcion.fechaCreacion, 'dd-MM-yyyy')}"></span>
+                    </div>
+                    <hr>
 
-                        <div class="btn-corner">
-                            <a class="btn btn-primary btn-sm" role="button" th:href="@{/adopciones}">Volver</a>
+                    <div th:if="${adopcion.adoptado == true}">
+                        <h4>SOBRE EL ADOPTANTE</h4>
+                        <p class="info">Nombre completo:
+                            <span th:text="${#strings.capitalize(#strings.toLowerCase(adopcion.nombreCompletoAdoptante))}"></span>
+                        </p>
+                        <p class="info">Email: <span th:text="${adopcion.emailAdoptante}"></span></p>
+                        <p class="info">Teléfono: <span th:text="${adopcion.telefonoAdoptante}"></span></p>
+                        <div class="info" style="font-size:13px; opacity: 0.6;">
+                            Adoptado el <span th:text="${#dates.format(adopcion.fechaAdopcion, 'dd-MM-yyyy')}"></span>
                         </div>
+                        <br>
+                    </div>
 
+
+                    <!--<div class="btn-corner">
+                        <a class="btn btn-primary btn-sm" role="button" th:href="@{/adopciones}">Volver</a>
+                    </div>-->
                 </div>
+
+
 
             </div>
 

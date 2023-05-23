@@ -31,18 +31,18 @@
 						</a></li>
 						<li class="nav-item" th:if="${session.cliente == null}"><a class="nav-link" th:href="@{/login}">Login</a></li>
 						<li class="nav-item" th:if="${session.cliente != null}"><a class="nav-link" th:href="@{/logout}">Cerrar sesion</a></li>
+						<a class="nav-link" th:href="@{/adopciones}">Adoptar Perro</a>
 
 						<li class="nav-item" th:if="${session.cliente != null and session.cliente.rol == 'CLIENTE'}">
 							<a class="nav-link" th:href="@{/formularioPerro}">Agregar mi Perro</a>
 							<a class="nav-link" th:href="@{/listarPerrosDeUsuario}">Ver mis perros</a>
-							<a class="nav-link" th:href="@{/mantenimiento}">Hacer Donacion</a>
+<!--							<a class="nav-link" th:href="@{/mantenimiento}">Hacer Donacion</a>-->
 
 							<a class="nav-link" th:href="@{/adopciones/misPublicaciones}">Ver mis publicaciones de adopción</a>
-							<a class="nav-link" th:href="@{/adopciones}">Adoptar Perro</a>
-							<a class="nav-link" th:href="@{/mantenimiento}">Publicar Perro perdido</a>
-							<a class="nav-link" th:href="@{/mantenimiento}">Buscar Perro perdido</a>
-							<a class="nav-link" th:href="@{/mantenimiento}">Ver turnos</a>
-							<a class="nav-link" th:href="@{/mantenimiento}">Ver Informacion de contactos</a>
+<!--							<a class="nav-link" th:href="@{/mantenimiento}">Publicar Perro perdido</a>-->
+<!--							<a class="nav-link" th:href="@{/mantenimiento}">Buscar Perro perdido</a>-->
+<!--							<a class="nav-link" th:href="@{/mantenimiento}">Ver turnos</a>-->
+<!--							<a class="nav-link" th:href="@{/mantenimiento}">Ver Informacion de contactos</a>-->
 							<a class="nav-link" th:href="@{/listarVeterinarias}">Ver Veterinarias recomendadas</a>
 						</li>
 						<!-- SI ES VETERINARIO PUEDE VER ESTAS OPCIONES -->
