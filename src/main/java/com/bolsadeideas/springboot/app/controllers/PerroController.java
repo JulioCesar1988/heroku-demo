@@ -2,6 +2,7 @@ package com.bolsadeideas.springboot.app.controllers;
 
 import com.bolsadeideas.springboot.app.models.entity.Cliente;
 import com.bolsadeideas.springboot.app.models.entity.Perro;
+import com.bolsadeideas.springboot.app.models.entity.Turno;
 import com.bolsadeideas.springboot.app.models.service.IClienteService;
 import com.bolsadeideas.springboot.app.models.service.IPerroService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,7 @@ import java.time.LocalDate;
 import java.time.Period;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -67,15 +69,7 @@ public class PerroController {
 
 // Agregamos al perro para un cliente
     @RequestMapping(value = "/agregarperro", method = RequestMethod.POST)
-    public String guardar(@Valid Perro perro, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status, HttpSession session, @RequestParam("foto") MultipartFile foto) throws IOException {
-
-        if (!foto.isEmpty()) {
-            byte[] bytes = foto.getBytes();
-            String nombreFoto = UUID.randomUUID().toString() + foto.getOriginalFilename();
-            perro.setFoto(nombreFoto.getBytes());
-            // Guardar la imagen en el sistema de archivos o en una base de datos
-            // ...
-        }
+    public String guardar(@Valid Perro perro, BindingResult result, Model model, RedirectAttributes flash, SessionStatus status, HttpSession session) throws IOException {
 
         Cliente c = (Cliente) session.getAttribute("cliente");
 
@@ -83,11 +77,9 @@ public class PerroController {
         LocalDate fechaActual = LocalDate.now();
         int edadEnAnios = Period.between(fechaNac, fechaActual).getYears();
 
-
         Period edadEnMeses = Period.between(fechaNac, fechaActual);
         int meses = edadEnMeses.getYears() * 12 + edadEnMeses.getMonths();
         System.out.println("ANos ->:" + edadEnAnios +" Meses -> "+meses );
-
 
         perro.setCliente(c);
         perroService.save(perro);

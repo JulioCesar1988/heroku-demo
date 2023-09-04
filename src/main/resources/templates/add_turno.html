@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<div class="container py-4">
+    <div class="card bg-dark text-white">
+        <div class="card-header" th:text="${titulo}"></div>
+        <div class="card-body">
+            <div th:object="${turno}" th:remove="tag">
+                <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                    <li th:each="err: ${#fields.errors('*')}" th:text="${err}"></li>
+                </ul>
+            </div>
+            <form th:action="@{/agregarTurno}" th:object="${turno}" method="post" enctype="multipart/form-data" >
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Motivo</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" th:field="*{motivo}" th:errorclass="'form-control alert-danger'"  required>
+                            <!--Pueden ser de: Consulta General, Vacunación, Desparasitación, Castración, Urgencia.-->
+                            <option value="">Seleccione un motivo</option>
+                            <option value="labrador">Consulta General</option>
+                            <option value="labrador">Vacunacion</option>
+                            <option value="labrador">Desparasitacion</option>
+                            <option value="labrador">Castracion</option>
+                            <option value="labrador">Urgencia</option>
+                            <!-- agregar más opciones aquí -->
+                        </select>
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('motivo')}" th:errors="*{motivo}"></small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Turno</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" th:field="*{franjaHoraria}" th:errorclass="'form-control alert-danger'"  required>
+                            <option value="">Seleccione una franja horaria</option>
+                            <option value="labrador">Mañana</option>
+                            <option value="labrador">Tarde</option>
+                            <!-- agregar más opciones aquí -->
+                        </select>
+                        <small class="form-text text-danger" th:if="${#fields.hasErrors('franjaHoraria')}" th:errors="*{franjaHoraria}"></small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Fecha de Inicio</label>
+                    <div class="col-sm-6">
+                        <input type="date" class="form-control" th:field="*{createAt}"  required
+                               th:errorclass="'form-control alert-danger'" /> <small
+                            class="form-text text-danger"
+                            th:if="${#fields.hasErrors('createAt')}" th:errors="*{createAt}"></small>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-6">
+                        <input type="submit" value="Crear Turno" class="btn btn-secondary" />
+                    </div>
+
+                    <div class="col-sm-6">
+                        <a href="/listarPerrosDeUsuario" class="btn btn-danger">Cancelar</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

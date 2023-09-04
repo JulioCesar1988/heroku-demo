@@ -6,20 +6,24 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
 @Entity
 @Table(name = "contacto")
-public class Contacto {
+public class Contacto implements Serializable  {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_contacto;
 
     private String telefono;
+
     private String direccion;
+
     private String email;
+
     private String tipo;
 
     @NotNull

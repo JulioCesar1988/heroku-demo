@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<table class="table table-striped">
+					<thead>
+					<tr>
+						<th>id_turno</th>
+						<th>Motivo</th>
+						<th>Franja Horaria</th>
+						<th>Estado</th>
+						<th>Fecha de Creación</th>
+						<th>Perro</th>
+						<th>Acciones</th>
+						<th>Cancelar</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr th:each="turno: ${turnos}">
+						<td th:text="${turno.id_turno}"></td>
+						<td th:text="${turno.motivo}"></td>
+						<td th:text="${turno.franjaHoraria}"></td>
+						<td th:text="${turno.estado}"></td>
+						<td th:text="${turno.createAt}"></td>
+						<td th:text="${turno.perro.nombre}"></td>
+
+						<td>
+							<a class="btn btn-primary btn-sm"
+							   th:href="@{/form/} + ${turno.id_turno}"
+							   th:text="'Editar'"></a>
+						</td>
+						<td>
+							<a class="btn btn-danger btn-sm"
+							   th:href="@{/eliminar/} + ${turno.id_turno}"
+							   th:text="'Cancelar'"
+							   onclick="return confirm('¿Estás seguro que quieres eliminar este Turno?');"></a>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+
+				<a class="btn btn-primary" th:href="@{/formTurno}" role="button">Agregar Nuevo Turno</a>
+
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

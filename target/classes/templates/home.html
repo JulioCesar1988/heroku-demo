@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<!-- Agregamos la clase "center-image" a la etiqueta "img" -->
+<center><img class="center-image" th:src="@{/images/Logo1.jpeg}" alt="Veterinaria Soft" /></center>
+
+
+<!--
+<div th:if="${session.cliente != null}">
+    <p>EXISTE UN SESION </p>
+    <p>Nombre del cliente <span th:text="${session.cliente.nombre}">Nombre</span>!</p>
+    <p>Tipo de Perfil <span th:text="${session.cliente.rol}">Rol</span>!</p>
+    <p>Email <span th:text="${session.cliente.email}">Email</span>!</p>
+    <div th:if="${session.cliente != null}">
+        <form th:action="@{/logout}" method="GET">
+            <button type="submit">Cerrar sesión</button>
+        </form>
+    </div>
+</div>
+
+
+<div th:if="${session.cliente == null}">
+    <p>NO EXISTE UN SESION </p>
+
+</div>
+
+
+-->
+
+
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

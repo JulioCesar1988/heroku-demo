@@ -39,6 +39,7 @@ public class Cliente implements Serializable {
 	private String rol;
 	
 	@NotEmpty
+	@Column(name = "email", unique = true)
 	@Email
 	private String email;
 
@@ -49,5 +50,7 @@ public class Cliente implements Serializable {
 	private Date createAt;
 
    private String clave;
+
+	private String telefono;
 
 }

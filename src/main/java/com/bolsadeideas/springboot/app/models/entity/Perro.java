@@ -5,12 +5,15 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "perros")
 public class Perro {
+
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_perro;
@@ -27,20 +30,17 @@ public class Perro {
     @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date createAt;
 
-    private String peso;
-
-
-
     @NotEmpty
     private String observacion;
 
-    @Lob
-    private byte[] foto;
-
-    // Otros atributos y métodos
     @ManyToOne
     @JoinColumn(name = "id_cliente")
     private Cliente cliente;
+
+
+    // Otros atributos y métodos
+    @OneToMany(mappedBy = "perro")
+    private List<Turno> turno;
 
 
 }

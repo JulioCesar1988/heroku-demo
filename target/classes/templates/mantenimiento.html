@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+
+<!-- Agregamos la clase "center-image" a la etiqueta "img" -->
+<img class="center-image" th:src="@{/images/mantenimiento.jpeg}" alt="Veterinaria Soft" />
+
+<center><h2>Estamos Trabajando en esta seccion</h2></center>
+<footer th:replace="layout/layout :: footer"></footer>
+<!-- Definimos el estilo CSS en el encabezado de la página -->
+<style>
+  .center-image {
+    display: block;
+    margin: 0 auto;
+  }
+</style>
+</body>
+</html>
